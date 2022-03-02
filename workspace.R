@@ -1,0 +1,1 @@
+setwd('Users/wsu31/OneDrive/Desktop/R Stuff/tma-pipeline')
