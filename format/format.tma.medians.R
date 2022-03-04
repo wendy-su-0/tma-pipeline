@@ -5,18 +5,16 @@
 
 ### PREAMBLE ######################################################################################
 
-setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/linear-models/');
+setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/tma-pipeline/');
 library('tidyr');
 library('dplyr');
 
 ### TITLE #########################################################################################
 
-generate.tma.medians <- function(tma.data.filename, which.cell.lines, return.data = TRUE) {
-  
-  #tma.data.filename <- ('2022-02-26-tma.data.six.ovarian-formatted.txt')
+format.tma.medians <- function(tma.data.filename, which.cell.lines) {
   
   ### LOAD DATA #################################################################################
-  tma.data <- read.table(file.path('outputs/data', tma.data.filename));
+  tma.data <- read.table(file.path('outputs', 'data', tma.data.filename));
   
   cell.lines <- unique(tma.data$RegionID);
   
@@ -48,11 +46,7 @@ generate.tma.medians <- function(tma.data.filename, which.cell.lines, return.dat
   tma.medians <- tma.medians[ order(row.names(tma.medians)), ]
   
   ### SAVE DATA #################################################################################
-  write.table(tma.medians, file.path("outputs/data", paste(Sys.Date(), which.cell.lines, 'tma.medians.txt', sep = '-')), sep = '\t');
-  
-  if(return.data){
-    return(tma.medians);
-  }
+  write.table(tma.medians, file.path('outputs', 'data', paste(Sys.Date(), which.cell.lines, 'tma.medians.txt', sep = '-')), sep = '\t');
   
 };
 
