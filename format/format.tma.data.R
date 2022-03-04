@@ -11,9 +11,9 @@ library('dplyr');
 
 #### FORMAT DATA #########################################################################################
 
-format.TMA.data <- function(TMA.file.name, TMA.data.type) {
+format.TMA.data <- function(tma.file.name, tma.data.type) {
   ### LOAD DATA ###################################################################################
-  tma.data <- read.csv(file.path('raw-data', 'nuclear-features', TMA.file.name), fileEncoding = 'UTF-8-BOM');
+  tma.data <- read.csv(file.path('raw-data', 'nuclear-features', tma.file.name), fileEncoding = 'UTF-8-BOM');
   
   ### REMOVE ROWS W/O DEPMAPDATA ##########################################################################
   tma.data <- subset(tma.data, tma.data$RegionID == 'Cell_lines_TMA_Core_CaoV3-R11' | 
@@ -35,7 +35,7 @@ format.TMA.data <- function(TMA.file.name, TMA.data.type) {
   tma.data[tma.data == 'Cell_lines_TMA_Core_TOV21G-R20'] <- 'TOV21G';
   
   ### SAVE DATA ####################################################################################
-  write.table(tma.data, file.path('outputs', 'data', paste(Sys.Date(), TMA.data.type, 'formatted.txt', sep = '-')), sep = '\t');
+  write.table(tma.data, file.path('outputs', 'data', paste(Sys.Date(), tma.data.type, 'formatted.txt', sep = '-')), sep = '\t');
   
 };
 
