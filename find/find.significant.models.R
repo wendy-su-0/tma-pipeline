@@ -4,7 +4,7 @@
 
 ### PREAMBLE ######################################################################################
 
-setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/linear-models/');
+setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/tma.pipeline/');
 library('tidyr');
 library('dplyr');
 library('BoutrosLab.plotting.general');
@@ -39,16 +39,6 @@ find.significant.models <- function(linear.models.folder) {
 
 ### DATA ANALYSIS #################################################################################
 
-find.significant.models('2022-02-27-PRISM-all.features');
 find.significant.models('2022-02-26-AUC.CTD2-all.features');
-find.significant.models('2022-02-26-AUC.GDSC1-all.features');
-find.significant.models('2022-02-26-AUC.GDSC2-all.features');
-find.significant.models('2022-02-26-AUC.PRISM-all.features');
-find.significant.models('2022-02-26-dose.level.PRISM-all.features');
-find.significant.models('2022-02-26-IC50-all.features');
-find.significant.models('2022-02-26-replicate.CTD2-all.features');
-find.significant.models('2022-02-27-replicate.GDSC1-all.features');
-find.significant.models('2022-02-27-replicate.GDSC2-all.features');
-find.significant.models('2022-02-27-replicate.PRISM-all.features');
 
 ### END ###########################################################################################

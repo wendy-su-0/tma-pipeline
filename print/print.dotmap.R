@@ -1,10 +1,6 @@
-# BIND ALL THE ADJUSTED P-VALUES OF ALL NUCLEAR FEATURES INTO A DATA FRAME
-# SORT THE THING SO THAT ONLY ROWS AND COLUMNS WITH SIGNIFICANTS ARE KEPT
-# PLOT IT
-
 ### PREAMBLE ######################################################################################
 
-setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/linear-models/');
+setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/tma-pipeline/');
 
 library(BoutrosLab.utilities);
 library(BoutrosLab.plotting.general);
@@ -13,9 +9,6 @@ library(BoutrosLab.statistics.general);
 
 ### PRINT DOT MAP #################################################################################
 print.corr.dotmap <- function(linear.models.folder, correlation.type) {
-  
-  #linear.models.folder <- '2022-02-10-PRISM-all.features';
-  #correlation.type <- 'spearmans.rho';
   
   ### LOAD DATA ###################################################################################
   
@@ -76,20 +69,6 @@ print.corr.dotmap <- function(linear.models.folder, correlation.type) {
   
   spot.size.function   <- function(x) { 0.1 + 1.5 * abs(x); } # Change the 1.5 number to make the dots visible
   
-  #notes
-  # 1 data frame.
-  #nef12 beta
-  #nef12 qvalue
-  #grab all the column names
-  # 2. x is all the column names
-  # 3. 1 dataframe. x = the beta column names, bg.data = the qvalue column names
-  
-  # USE LOG P VALUES
-  
-  # strip the drug name
-  
-  # qualiy control with the chi square dotmap that is idential 
-  
   ### PLOT DATA ####################################################################################
   
   significant.models.dotmap <- create.dotmap(
@@ -142,8 +121,8 @@ print.corr.dotmap <- function(linear.models.folder, correlation.type) {
   );
   
   ### SAVE PLOT ##################################################################################  
-  #png(file = file.path('outputs', 'plots', linear.models.folder, paste(linear.models.folder, correlation.type, 'dotmap.png', sep = '-')), width = 1080); 
-  png(file = file.path('outputs', 'plots', paste(linear.models.folder, correlation.type, 'dotmap.png', sep = '-')), width = 1080, height = 1080); 
+  png(file = file.path('outputs', 'plots', linear.models.folder, paste(linear.models.folder, correlation.type, 'dotmap.png', sep = '-')), width = 1080); 
+  #png(file = file.path('outputs', 'plots', paste(linear.models.folder, correlation.type, 'dotmap.png', sep = '-')), width = 1080, height = 1080); 
   print(significant.models.dotmap);
   dev.off();
   
@@ -154,6 +133,5 @@ print.corr.dotmap <- function(linear.models.folder, correlation.type) {
 #dir.create(file.path('outputs', 'plots', '2022-02-09-AUC.GDSC1-all.features'));
 print.corr.dotmap('2022-02-26-AUC.CTD2-all.features', 'beta.coefficient');
 print.corr.dotmap('2022-02-26-AUC.CTD2-all.features', 'spearmans.rho');
-
 
 ### END ##########################################################################################

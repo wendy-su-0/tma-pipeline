@@ -1,6 +1,6 @@
 ### PREAMBLE ######################################################################################
 
-setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/linear-models/');
+setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/tma-pipeline/');
 
 library('tidyr');
 library('dplyr');
@@ -17,9 +17,6 @@ find.correlation.coefficients <- function(linear.models.folder) {
   #empty dataframe to hold correlation coefficients
   beta.coefficient.coefficient.dataframe <- NULL; 
   spearmans.rho.coefficient.dataframe <- NULL; 
-  
-  #linear.models.folder <- '2022-02-10-PRISM-all.features';
-  #linear.model <- read.table('outputs/statistics/2022-02-10-PRISM-all.features/2022-02-10-NH.F1-PRISM-linear-model-statistics.txt')
   
   ### FORMAT DATA ################################################################################
   #read in those summary statistics
@@ -60,16 +57,6 @@ find.correlation.coefficients <- function(linear.models.folder) {
 
 ### DATA ANALYSIS ################################################################################
 
-find.correlation.coefficients('2022-02-27-PRISM-all.features');
 find.correlation.coefficients('2022-02-26-AUC.CTD2-all.features');
-find.correlation.coefficients('2022-02-26-AUC.GDSC1-all.features');
-find.correlation.coefficients('2022-02-26-AUC.GDSC2-all.features');
-find.correlation.coefficients('2022-02-26-AUC.PRISM-all.features');
-find.correlation.coefficients('2022-02-26-dose.level.PRISM-all.features');
-find.correlation.coefficients('2022-02-26-IC50-all.features');
-find.correlation.coefficients('2022-02-26-replicate.CTD2-all.features');
-find.correlation.coefficients('2022-02-27-replicate.GDSC1-all.features');
-find.correlation.coefficients('2022-02-27-replicate.GDSC2-all.features');
-find.correlation.coefficients('2022-02-27-replicate.PRISM-all.features');
 
 ### END ##########################################################################################

@@ -4,16 +4,16 @@
 
 ### PREAMBLE ######################################################################################
 
-setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/linear-models/');
+setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/tma-pipeline/');
 library('tidyr');
 library('dplyr');
 library('BoutrosLab.plotting.general');
 
 ### FIND Q VALUES #################################################################################
-find.q.values <- function(linear.models.folder) { #i assume we're passing in a directory
+find.q.values <- function(linear.models.folder) { 
   
   ### LOAD DATA ###################################################################################
-  linear.model.files <- list.files(path = file.path(getwd(), 'outputs/statistics', linear.models.folder));
+  linear.model.files <- list.files(path = file.path('outputs', 'statistics', linear.models.folder));
   
   #create empty dataframes to hold summary statistics
   main.effect.q.values <- NULL;
@@ -24,7 +24,7 @@ find.q.values <- function(linear.models.folder) { #i assume we're passing in a d
   for (file in 1:length(linear.model.files)){
     
     #read file
-    linear.model <- read.table(file.path('outputs/statistics', linear.models.folder, linear.model.files[file]));
+    linear.model <- read.table(file.path('outputs', 'statistics', linear.models.folder, linear.model.files[file]));
     
     #read summary statistics
     main.effect.q.value <- linear.model$main.effect.q.value;
@@ -60,16 +60,6 @@ find.q.values <- function(linear.models.folder) { #i assume we're passing in a d
 
 ### DATA ANALYSIS #################################################################################
 
-find.q.values('2022-02-27-PRISM-all.features');
 find.q.values('2022-02-26-AUC.CTD2-all.features');
-find.q.values('2022-02-26-AUC.GDSC1-all.features');
-find.q.values('2022-02-26-AUC.GDSC2-all.features');
-find.q.values('2022-02-26-AUC.PRISM-all.features');
-find.q.values('2022-02-26-dose.level.PRISM-all.features');
-find.q.values('2022-02-26-IC50-all.features');
-find.q.values('2022-02-26-replicate.CTD2-all.features');
-find.q.values('2022-02-27-replicate.GDSC1-all.features');
-find.q.values('2022-02-27-replicate.GDSC2-all.features');
-find.q.values('2022-02-27-replicate.PRISM-all.features');
 
 ### END ###########################################################################################
