@@ -11,7 +11,7 @@ library('dplyr');
 
 ### TITLE #########################################################################################
 
-format.CCLE.data <- function(depmap.file.name, depmap.data.type) {
+format.depmap.data <- function(depmap.file.name, depmap.data.type) {
   
   ### LOAD DATA #################################################################################
   depmap.outputs <- read.csv(file.path('raw-data', 'depmap', depmap.file.name));
@@ -38,6 +38,6 @@ format.CCLE.data <- function(depmap.file.name, depmap.data.type) {
 
 ### DATA ANALYSIS #################################################################################
 
-format.CCLE.data('Drug_sensitivity_(PRISM_Repurposing_Primary_Screen)_19Q4_subsetted.csv', 'PRISM.drug.sensitivity.six.ovarian', return.data = FALSE);
+format.depmap.data('Drug_sensitivity_(PRISM_Repurposing_Primary_Screen)_19Q4_subsetted.csv', 'PRISM.drug.sensitivity.six.ovarian', return.data = FALSE);
 
 ### END ###########################################################################################

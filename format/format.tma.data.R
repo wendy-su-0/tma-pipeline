@@ -11,7 +11,7 @@ library('dplyr');
 
 #### FORMAT DATA #########################################################################################
 
-format.TMA.data <- function(tma.file.name, tma.data.type) {
+format.tma.data <- function(tma.file.name, tma.data.type) {
   ### LOAD DATA ###################################################################################
   tma.data <- read.csv(file.path('raw-data', 'nuclear-features', tma.file.name), fileEncoding = 'UTF-8-BOM');
   
@@ -41,6 +41,6 @@ format.TMA.data <- function(tma.file.name, tma.data.type) {
 
 ### DATA ANALYSIS ##################################################################################
 
-format.TMA.data('Cell_lines_TMA_HE.csv','tma.data.six.ovarian');
+format.tma.data('Cell_lines_TMA_HE.csv','tma.data.six.ovarian');
 
 ### END ############################################################################################

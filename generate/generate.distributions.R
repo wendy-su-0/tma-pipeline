@@ -12,13 +12,13 @@ library(Hmisc);
 
 ### GENERATE HISTOGRAMS ############################################################################
 
-generate.histograms <- function(nuclear.features.file.name, cell.lines) {
+generate.histograms <- function(tma.file.name, cell.lines) {
   
   ### READ DATA ####################################################################################
-  tma.data.formatted <- read.table(file.path("outputs/data", nuclear.features.file.name));
+  tma.data.formatted <- read.table(file.path('outputs', 'data', tma.file.name));
   
   ### MAKE PDF #####################################################################################
-  pdf(file = file.path('outputs/plots', paste(Sys.Date(), cell.lines, 'nuclear.feature.histograms.pdf', sep = '-')), onefile = TRUE);
+  pdf(file = file.path('outputs', 'plots', paste(Sys.Date(), cell.lines, 'nuclear.feature.histograms.pdf', sep = '-')), onefile = TRUE);
   
   ### MAKE HISTOGRAMS ##############################################################################
   hist.data.frame(tma.data.formatted[c(-1)]);
@@ -30,17 +30,17 @@ generate.histograms <- function(nuclear.features.file.name, cell.lines) {
 
 ### GENERATE SUMMARY STATISTICS ####################################################################
 
-assess.summary.statistics <- function(tma.data.name, depmap.data.name, cell.lines) {
+generate.summary.statistics <- function(tma.file.name, depmap.file.name, cell.lines) {
   
   ### LOAD DATA ####################################################################################
-  tma.data.formatted <- read.table(file.path("outputs/data", tma.data.name));
-  depmap.data.formatted <- read.table(file.path("outputs/data", depmap.data.name));
+  tma.data.formatted <- read.table(file.path('outputs', 'data', tma.file.name));
+  depmap.data.formatted <- read.table(file.path('outputs', 'data', depmap.file.name));
   
   ### PREPARE MEDIAN DATAFRAME #####################################################################
   column.names <- colnames(tma.data.formatted)[2:length(tma.data.formatted)];
   cell.lines <- depmap.data.formatted$cell_line_display_name;
   tma.medians <- tma.data.formatted[cell.lines, column.names];
-  rownames(tma.medians) <- cell.lines;
+  rownames(tma.mediansns) <- cell.lines;
   
   ### PREPARE SUMMARY DATAFRAME ####################################################################
   tma.summary.statsitics <- NULL;
@@ -71,12 +71,12 @@ assess.summary.statistics <- function(tma.data.name, depmap.data.name, cell.line
   rownames(tma.summary.statsitics) <- colnames(tma.data.formatted[ , 2:length(tma.data.formatted)]);
   
   ### SAVE DATA ####################################################################################
-  write.table(tma.summary.statsitics, file.path("outputs/statistics", paste(Sys.Date(), cell.lines, 'tma.summary.statsitics.txt', sep = '-')), sep = '\t');
+  write.table(tma.summary.statsitics, file.path('outputs', 'statistics', paste(Sys.Date(), cell.lines, 'tma.summary.statsitics.txt', sep = '-')), sep = '\t');
   
 };
 
 ### DATA ANALYSIS ##################################################################################
 
-assess.summary.statistics('file.txt', 'file.txt', 'six.ovarian');
+
 
 ### END ############################################################################################
