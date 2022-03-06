@@ -69,6 +69,63 @@ print.corr.dotmap <- function(linear.models.folder, correlation.type) {
   
   spot.size.function   <- function(x) { 0.1 + 1.5 * abs(x); } # Change the 1.5 number to make the dots visible
   
+  ### FORMAT DRUG NAMES ########################################################
+  drug.names <- rownames(correlation.coefficients.filtered);
+  drug.names.stripped <- NULL;
+  
+  for (name in drug.names) {
+    stripped.name <- strsplit(name, '[..]')[[1]][1];
+    drug.names.stripped <- c(drug.names.stripped, stripped.name);
+  }
+  
+  if(length(drug.names.stripped) != length(unique(drug.names.stripped))){
+    
+    drug.name.dupes <- duplicated(drug.names.stripped);
+    
+    duplicate.name.index <- NULL;
+    
+    for (i in 1:length(drug.names.stripped)) {
+      
+      if (drug.name.dupes[i]) {
+        
+        duplicate.name.index <- c(duplicate.name.index, i);
+        
+      }
+      
+    }
+    
+    counter <- 0;
+    
+    for (x in duplicate.name.index){
+      log.q.values.filtered <- log.q.values.filtered[-c(x - counter), ];
+      correlation.coefficients.filtered <- correlation.coefficients.filtered[-c(x - counter), ];
+      
+      counter <- counter + 1;
+    }
+    
+    drug.names.stripped <- unique(drug.names.stripped);
+    
+  }
+  
+  rownames(correlation.coefficients.filtered) <- drug.names.stripped;
+  
+  ### FORMAT NUCLEAR FEATURE NAMES #############################################
+  nuclear.feature.names = read.table(file.path('documents', 'nuclear.features.key.txt);
+  feature.names <- as.data.frame(rownames(correlation.coefficients.filtered));
+  feature.names.stripped <- NULL;
+  
+  feature.names.stripped <- merge(
+    x = nuclear.feature.names,
+    y = feature.names,
+    by.x = 'nuclear.feature.symbol',
+    by.y = 'rownames(correlation.coefficients.filtered)',
+    all.x = FALSE,
+    all.y = TRUE
+  );
+  
+  feature.names.stripped <- c(feature.names.stripped$nuclear.feature.name);
+  rownames(correlation.coefficients.filtered) <- feature.names.stripped;
+  
   ### PLOT DATA ####################################################################################
   
   significant.models.dotmap <- create.dotmap(
@@ -121,7 +178,7 @@ print.corr.dotmap <- function(linear.models.folder, correlation.type) {
   );
   
   ### SAVE PLOT ##################################################################################  
-  png(file = file.path('outputs', 'plots', linear.models.folder, paste(linear.models.folder, correlation.type, 'dotmap.png', sep = '-')), width = 1080); 
+  png(file = file.path('outputs', 'plots', paste(linear.models.folder, correlation.type, 'dotmap.png', sep = '-')), width = 1080); 
   #png(file = file.path('outputs', 'plots', paste(linear.models.folder, correlation.type, 'dotmap.png', sep = '-')), width = 1080, height = 1080); 
   print(significant.models.dotmap);
   dev.off();
