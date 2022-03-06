@@ -213,7 +213,7 @@ generate.linear.model <- function(nuclear.feature.index, tma.medians.data, depma
   result.summary.stats$spearmans.rho.log.10.fdr <- -log(result.summary.stats$spearmans.rho.q.value, base = 10)
   
   ### SAVE DATA #####################################################
-  write.table(result.summary.stats, file.path("outputs/statistics", paste(Sys.Date(), depmap.data.type, nuclear.feature.type, sep = '-'), paste(Sys.Date(), nuclear.feature.name, depmap.data.type, 'linear-model-statistics.txt', sep = '-')), sep = '\t');
+  write.table(result.summary.stats, file.path('outputs', 'statistics', paste(Sys.Date(), depmap.data.type, nuclear.feature.type, sep = '-'), paste(Sys.Date(), nuclear.feature.name, depmap.data.type, 'linear-model-statistics.txt', sep = '-')), sep = '\t');
   
   #file.path('outputs/statistics', paste(Sys.Date(), depmap.data.type, nuclear.feature.type, sep = '-'))
 };
