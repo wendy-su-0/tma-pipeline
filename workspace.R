@@ -1,19 +1,19 @@
 ### SET THE FOLDER YOUR FILES ARE ##############################################
-setwd('Users/wsu31/OneDrive/Desktop/R Stuff/tma-pipeline')
+setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/tma-pipeline')
 
 ### R PACKAGES AND SCRIPTS #####################################################
 
   ### INSTALL PACKAGES: ONLY NEED TO DO ONCE ###################################
-  install.packages(tidyr);
-  install.packages(dplyr);
-  install.packages(Hmisc);
-  install.packages(lme4);
-  install.packages(lsr);
-  install.packages(insight);
-  install.packages(sjstats);
-  install.packages(sjstats);
+  install.packages('tidyr');
+  install.packages('dplyr');
+  install.packages('Hmisc');
+  install.packages('lme4');
+  install.packages('lsr');
+  install.packages('insight');
+  install.packages('sjstats');
+  install.packages('effsize');
   install.packages(dependencies/BoutrosLab.utilities_1.9.10.tar.gz);
-  install.packages(BoutrosLab.plotting.general);
+  install.packages('BoutrosLab.plotting.general');
   install.packages(dependencies/BoutrosLab.statistics.general_2.1.3.tar.gz);
 
   ### LOAD PACKAGES: EVERY R SESSION ###########################################
@@ -60,26 +60,34 @@ setwd('Users/wsu31/OneDrive/Desktop/R Stuff/tma-pipeline')
 
   ### GENERATE HISTOGRAMS ######################################################
   generate.histograms(tma.file.name, cell.lines);
+  #generate.histograms(tma.file.name, cell.lines)
+
 
   ### GENERATE SUMMARY STATISTICS ##############################################
   generate.summary.statistics(tma.file.name, depmap.file.name, cell.lines);
+  #generate.summary.statistics(tma.file.name, depmap.file.name, cell.lines);
 
 ### GENERATE LINEAR MODELS #####################################################
-select.nuclear.feature.models('2022-02-26-six.cell.lines-tma.medians.txt', '2022-02-26-AUC.CTD2.drug.sensitivity.six.ovarian-formatted.txt', 'all.features', 'AUC.CTD2');
+generate.selected.linear.models('2022-03-07-six.cell.lines-tma.medians.txt', '2022-03-07-AUC.CTD2.drug.sensitivity.six.ovarian-formatted.txt', 'all.features', 'AUC.CTD2');
+#generate.selected.linear.models(tma.medians.file.name, depmap.data.file.name, nuclear.feature.type, depmap.data.type)
 
 
 ### FIND KEY STATISTICS ########################################################
 
   ### FIND CORRELATION COEFFICIENTS ############################################
   find.correlation.coefficients(linear.models.folder);
+  #find.correlation.coefficients(linear.models.folder);
   
   ### FIND Q VALUES ############################################################
   find.q.values(linear.models.folder);
+  #find.q.values(linear.models.folder);
                           
   ### FIND SIGNIFICANT MODELS ##################################################
   find.significant.models(linear.models.folder);
+  #find.significant.models(linear.models.folder);
 
 ### PRINT DOTMAP ###############################################################
-print.corr.dotmap('2022-02-26-AUC.CTD2-all.features', 'beta.coefficient');
+print.corr.dotmap('2022-03-07-AUC.CTD2-all.features', 'beta.coefficient');
+#print.corr.dotmap(linear.models.folder, correlation.type);
 
 ### END ########################################################################
