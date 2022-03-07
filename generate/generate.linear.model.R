@@ -6,41 +6,20 @@
 
 ### PREAMBLE ########################################################
 
-# setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/linear-models/');
-# 
 library(tidyr);
 library(dplyr);
 library(lme4);
 library(lsr);
 library(insight);
 library(sjstats);
-library(effsize); #consider switching out effectsize
-#look at another stats packages
+library(effsize);
 library(BoutrosLab.utilities);
 library(BoutrosLab.plotting.general);
 library(BoutrosLab.statistics.general);
 
-#source('format/format.CCLE.data.R');
-
 ### LIN MODELS ######################################################
 generate.linear.model <- function(nuclear.feature.index, tma.medians.data, depmap.data, nuclear.feature.type, depmap.data.type) {
-  #generate.linear.model <- function(nuclear.feature.index, depmap.data.type) {
   
-  # nuclear.feature.index <- 1;
-  # tma.medians.data <- read.table('outputs/data/2022-02-26-six.cell.lines-tma.medians.txt')
-  # depmap.data <- read.table('outputs/data/2022-02-26-replicate.GDSC2.drug.sensitivity.six.ovarian-formatted.txt')
-  # depmap.data <- read.table('outputs/data/2022-02-09-replicate.GDSC1.drug.sensitivity.six.ovarian-formatted.txt')
-  # nuclear.feature.type <- 'all.features'
-  # depmap.data.type <- 'dose.level.PRISM'
-  
-  ### LOAD DATA #####################################################
-  #source('generate/run.specified.nuclear.features.R');
-  #match feature name with the column index
-  #tma.data <- tma.medians.data[,nuclear.feature.name]
-  
-  #old code
-  #CODE AS ARGUMENT
-  #tma.data <- read.table(file.path('outputs.data', tma.medians.file.name));
   nuclear.feature.name <- colnames(tma.medians.data[nuclear.feature.index]);
   
   if (nrow(tma.medians.data) != nrow(depmap.data)) {
@@ -48,35 +27,11 @@ generate.linear.model <- function(nuclear.feature.index, tma.medians.data, depma
     
   }
   
-  #tma.data <- tma.medians.data[ ,nuclear.feature.index];
   tma.data <- tma.medians.data[ ,nuclear.feature.index];
   
-  ####see if still need after i run models
   depmap.data <- depmap.data;
-  
-  #extract that column
-  
-  #switch R and L
-  #val == var
-  
-  
-  #if(depmap.data.type == 'drug') {
-  #depmap.data <- read.table('outputs/data/2021.11.7-drug.sensitivity.six.ovarian-formatted.txt')
-  ##depmap.data <- format.CCLE.data('Drug_sensitivity_(PRISM_Repurposing_Primary_Screen)_19Q4_subsetted.csv', '2021.11.7',  'drug.sensitivity.six.ovarian');
-  #}
-  
-  
-  #when other datasets, depmap.data.type == cnv or rna.seq
-  
   ### FORMAT DATA ###################################################
-  #index columns. set 8 to constant
-  #colstart to replace 8/whenever drugs start in dataframe
   
-  ##if there are fewer depmap rows, filter the tma.data rows
-  
-  
-  ### CREATE EMPTY ##################################################
-  # Initiate result summary data frame
   result.summary.stats <- NULL;
   
   ### CREATE LIN MODELS #############################################
@@ -220,15 +175,5 @@ generate.linear.model <- function(nuclear.feature.index, tma.medians.data, depma
 
 
 ### DATA ANALYSIS ###################################################
-
-# FDR adjust all or only significant
-
-# Have set seed for rn
-
-### VOLC PLOT #######################################################
-
-# separate script
-# all volc plots - top 10 most hits
-# if all, heatmap- gene beta coef of gene
 
 ### END #############################################################
