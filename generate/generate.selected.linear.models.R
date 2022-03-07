@@ -14,7 +14,7 @@ library(effsize);
 library(BoutrosLab.utilities);
 library(BoutrosLab.plotting.general);
 library(BoutrosLab.statistics.general);
-source('generate/generate.linear.models.R');
+source('generate/generate.linear.model.R');
 #check necessary libraries
 
 ### WHICH FEATURES ##################################################
@@ -44,6 +44,6 @@ generate.selected.linear.models <- function(tma.medians.file.name, depmap.data.f
 
 ### DATA ANALYSIS ##############################################################
 
-select.nuclear.feature.models('2022-02-26-six.cell.lines-tma.medians.txt', '2022-02-26-AUC.CTD2.drug.sensitivity.six.ovarian-formatted.txt', 'all.features', 'AUC.CTD2');
+#select.nuclear.feature.models('2022-02-26-six.cell.lines-tma.medians.txt', '2022-02-26-AUC.CTD2.drug.sensitivity.six.ovarian-formatted.txt', 'all.features', 'AUC.CTD2');
 
 ### END ########################################################################

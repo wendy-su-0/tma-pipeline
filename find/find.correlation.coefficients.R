@@ -57,6 +57,6 @@ find.correlation.coefficients <- function(linear.models.folder) {
 
 ### DATA ANALYSIS ################################################################################
 
-find.correlation.coefficients('2022-02-26-AUC.CTD2-all.features');
+#('2022-02-26-AUC.CTD2-all.features');
 
 ### END ##########################################################################################

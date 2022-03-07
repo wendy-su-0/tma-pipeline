@@ -38,6 +38,6 @@ format.depmap.data <- function(depmap.file.name, depmap.data.type) {
 
 ### DATA ANALYSIS #################################################################################
 
-format.depmap.data('Drug_sensitivity_(PRISM_Repurposing_Primary_Screen)_19Q4_subsetted.csv', 'PRISM.drug.sensitivity.six.ovarian', return.data = FALSE);
+#format.depmap.data('Drug_sensitivity_(PRISM_Repurposing_Primary_Screen)_19Q4_subsetted.csv', 'PRISM.drug.sensitivity.six.ovarian');
 
 ### END ###########################################################################################

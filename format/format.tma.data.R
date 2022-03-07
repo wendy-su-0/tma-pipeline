@@ -41,6 +41,6 @@ format.tma.data <- function(tma.file.name, tma.data.type) {
 
 ### DATA ANALYSIS ##################################################################################
 
-format.tma.data('Cell_lines_TMA_HE.csv','tma.data.six.ovarian');
+#format.tma.data('Cell_lines_TMA_HE.csv','tma.data.six.ovarian');
 
 ### END ############################################################################################

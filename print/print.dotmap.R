@@ -110,7 +110,7 @@ print.corr.dotmap <- function(linear.models.folder, correlation.type) {
   rownames(correlation.coefficients.filtered) <- drug.names.stripped;
   
   ### FORMAT NUCLEAR FEATURE NAMES #############################################
-  nuclear.feature.names = read.table(file.path('documents', 'nuclear.features.key.txt);
+  nuclear.feature.names = read.table(file.path('documents', 'nuclear.features.key.txt'));
   feature.names <- as.data.frame(rownames(correlation.coefficients.filtered));
   feature.names.stripped <- NULL;
   

@@ -33,7 +33,7 @@ setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/tma-pipeline')
   source('format/format.depmap.data.R');
   source('format/format.tma.data.R');
   source('format/format.tma.medians.R');
-  source('generate/generate.linear.models.R');
+  source('generate/generate.linear.model.R');
   source('generate/generate.distributions.R');
   source('generate/generate.selected.linear.models.R');
   source('find/find.q.values.R');
@@ -52,19 +52,19 @@ setwd('/Users/wsu31/OneDrive/Desktop/R Stuff/tma-pipeline')
   #format.tma.data(tma.file.name, tma.data.type)
 
   ### GENERATE NUCLEAR FEATURE MEDIANS #########################################
-  generate.tma.medians('2022-03-07-tma.data.six.ovarian-formatted.txt', 'six.cell.lines');
+  format.tma.medians('2022-03-07-tma.data.six.ovarian-formatted.txt', 'six.cell.lines');
   #format.tma.median(tma.data.filename, which.cell.lines)
 
 
 ### GENERATE DISTRIBUTIONS #####################################################
 
   ### GENERATE HISTOGRAMS ######################################################
-  generate.histograms(tma.file.name, cell.lines);
+  generate.histograms('2022-03-07-tma.data.six.ovarian-formatted.txt', 'six.cell.lines');
   #generate.histograms(tma.file.name, cell.lines)
 
 
   ### GENERATE SUMMARY STATISTICS ##############################################
-  generate.summary.statistics(tma.file.name, depmap.file.name, cell.lines);
+  generate.summary.statistics('2022-03-07-tma.data.six.ovarian-formatted.txt', '2022-03-07-AUC.CTD2.drug.sensitivity.six.ovarian-formatted.txt', 'six.cell.lines');
   #generate.summary.statistics(tma.file.name, depmap.file.name, cell.lines);
 
 ### GENERATE LINEAR MODELS #####################################################
@@ -75,15 +75,15 @@ generate.selected.linear.models('2022-03-07-six.cell.lines-tma.medians.txt', '20
 ### FIND KEY STATISTICS ########################################################
 
   ### FIND CORRELATION COEFFICIENTS ############################################
-  find.correlation.coefficients(linear.models.folder);
+  find.correlation.coefficients('2022-03-07-AUC.CTD2-all.features');
   #find.correlation.coefficients(linear.models.folder);
   
   ### FIND Q VALUES ############################################################
-  find.q.values(linear.models.folder);
+  find.q.values('2022-03-07-AUC.CTD2-all.features');
   #find.q.values(linear.models.folder);
                           
   ### FIND SIGNIFICANT MODELS ##################################################
-  find.significant.models(linear.models.folder);
+  find.significant.models('2022-03-07-AUC.CTD2-all.features');
   #find.significant.models(linear.models.folder);
 
 ### PRINT DOTMAP ###############################################################

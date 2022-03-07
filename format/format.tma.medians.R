@@ -52,6 +52,6 @@ format.tma.medians <- function(tma.data.filename, which.cell.lines) {
 
 ### DATA ANALYSIS #################################################################################
 
-generate.tma.medians('2022-02-26-tma.data.six.ovarian-formatted.txt', 'six.cell.lines', return.data = FALSE);
+#generate.tma.medians('2022-02-26-tma.data.six.ovarian-formatted.txt', 'six.cell.lines', return.data = FALSE);
 
 ### END ###########################################################################################
